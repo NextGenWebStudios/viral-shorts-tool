@@ -1,119 +1,123 @@
-let dailyLimit = 2;
-let today = new Date().toDateString();
+const hooks=[
+"Nobody talks about the truth about",
+"The hidden secret behind",
+"Why everyone misunderstands",
+"The shocking reality of",
+"This mistake is ruining"
+]
+
+
+const titles=[
+"The Untold Story of",
+"What Really Happened to",
+"The Truth About",
+"The Rise of",
+"The Dark Side of"
+]
+
+
+const ideas=[
+"Why Tesla almost failed",
+"How Netflix changed entertainment",
+"The rise of MrBeast",
+"The hidden story of Apple",
+"The fall of Nokia"
+]
+
+
+function random(arr){
+
+return arr[Math.floor(Math.random()*arr.length)]
+
+}
+
+
+
+function generateHook(){
+
+let topic=document.getElementById("hookTopic").value
+
+let hook=random(hooks)+" "+topic
+
+document.getElementById("hookResult").innerText=hook
+
+}
+
+
+
+function generateTitle(){
+
+let topic=document.getElementById("titleTopic").value
+
+let title=random(titles)+" "+topic
+
+document.getElementById("titleResult").innerText=title
+
+}
+
+
+
+function generateIdea(){
+
+document.getElementById("ideaResult").innerText=random(ideas)
+
+}
+
+
 
 function generateScript(){
 
-let topic=document.getElementById("topic").value;
-let length=document.getElementById("length").value;
+let topic=document.getElementById("scriptTopic").value
 
-let storedDate = localStorage.getItem("date");
-let count = parseInt(localStorage.getItem("count") || 0);
 
-if(storedDate !== today){
-localStorage.setItem("date", today);
-localStorage.setItem("count", 0);
-count = 0;
-}
+let hook=random(hooks)+" "+topic+"."
 
-if(count >= dailyLimit){
-alert("Free limit reached. Upgrade for more scripts.");
-return;
-}
 
-localStorage.setItem("count", count + 1);
+let story="Most people think the story is simple, but the reality is far more interesting."
 
-if(topic===""){
-alert("Enter a topic first");
-return;
-}
 
-let hook = [
-`Nobody talks about this truth about ${topic}.`,
-`The real story behind ${topic} is shocking.`,
-`This secret about ${topic} changed everything.`,
-`Most people misunderstand ${topic}.`
-];
+let twist="The craziest part? Almost nobody noticed the key moment that changed everything."
 
-let hookPick = hook[Math.floor(Math.random()*hook.length)];
 
-let script="";
+let ending="Follow for more viral stories."
 
-if(length==="short"){
 
-script =
+let script=
 
-`HOOK:
-${hookPick}
+"HOOK:\n"+hook+"\n\n"+
 
-SCRIPT:
-Most people only see the surface of ${topic}, but the real story is very different.
-At first, things looked completely normal.
-But behind the scenes, something unexpected happened that changed everything.
-That small moment is actually the reason people still talk about it today.
+"STORY:\n"+story+"\n\n"+
 
-ENDING:
-Follow for more viral stories.`;
+"TWIST:\n"+twist+"\n\n"+
+
+"ENDING:\n"+ending+"\n\n"+
+
+"Created with CreatorGrowth AI"
+
+
+
+document.getElementById("scriptResult").value=script
 
 }
 
-else if(length==="medium"){
 
-script =
-
-`HOOK:
-${hookPick}
-
-STORY:
-Most people think ${topic} happened overnight, but the truth is very different.
-In the beginning, nobody believed this idea would work.
-There were many failures, criticism, and doubts.
-
-But one key decision completely changed the direction.
-That moment turned a struggling idea into something powerful.
-
-Today, when people talk about ${topic}, they usually ignore the difficult part of the journey.
-
-ENDING:
-Follow for more viral stories like this.`;
-
-}
-
-else{
-
-script =
-
-`HOOK:
-${hookPick}
-
-STORY:
-Most people believe ${topic} became successful very quickly.
-But the reality is much more interesting.
-
-In the early days, there were many problems and almost nobody believed the idea would succeed.
-Many people thought it would fail completely.
-
-But then something unexpected happened.
-One decision changed everything and pushed the idea forward.
-
-That moment is the reason why ${topic} became so influential today.
-
-TWIST:
-The craziest part is that this turning point was almost invisible at the time.
-
-ENDING:
-Follow for more viral stories like this.`;
-
-}
-
-document.getElementById("result").innerText=script;
-
-}
 
 function copyScript(){
 
-const text=document.getElementById("result").innerText;
-navigator.clipboard.writeText(text);
+let text=document.getElementById("scriptResult")
 
-alert("Script copied!");
+text.select()
+
+document.execCommand("copy")
+
+alert("Script copied!")
+
+}
+
+
+
+function scrollToTools(){
+
+document.getElementById("tools").scrollIntoView({behavior:"smooth"})
 
 }
