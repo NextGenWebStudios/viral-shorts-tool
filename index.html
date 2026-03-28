@@ -1,82 +1,303 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Viral Script Generator</title>
 
-<title>Viral Shorts Script Generator</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+<style>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background:#0f0f1a;
+color:white;
+overflow-x:hidden;
+}
 
+/* animated gradient background */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(45deg,#ff416c,#ff4b2b,#7928ca,#2afadf);
+background-size:400% 400%;
+animation:gradientMove 15s ease infinite;
+z-index:-1;
+opacity:0.25;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* hero */
+
+.hero{
+text-align:center;
+margin-top:80px;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:10px;
+}
+
+.hero p{
+opacity:0.8;
+}
+
+/* input area */
+
+.generator{
+margin-top:40px;
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:16px;
+backdrop-filter:blur(10px);
+box-shadow:0 20px 50px rgba(0,0,0,0.4);
+}
+
+input{
+width:100%;
+padding:14px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,0.15);
+background:rgba(255,255,255,0.05);
+color:white;
+font-size:15px;
+outline:none;
+margin-bottom:15px;
+}
+
+input:focus{
+border-color:#ff4b2b;
+}
+
+button{
+background: linear-gradient(135deg,#ff416c,#ff4b2b);
+border:none;
+padding:14px 24px;
+border-radius:10px;
+color:white;
+font-weight:600;
+font-size:16px;
+cursor:pointer;
+transition:all 0.25s ease;
+box-shadow:0 10px 25px rgba(255,70,70,0.3);
+}
+
+button:hover{
+transform:translateY(-2px);
+box-shadow:0 15px 35px rgba(255,70,70,0.4);
+}
+
+.result{
+margin-top:25px;
+padding:20px;
+background:rgba(255,255,255,0.05);
+border-radius:12px;
+min-height:80px;
+line-height:1.6;
+}
+
+/* pricing */
+
+.pricing{
+display:flex;
+gap:25px;
+margin-top:80px;
+flex-wrap:wrap;
+}
+
+.card{
+flex:1;
+padding:30px;
+border-radius:16px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+text-align:center;
+transition:0.3s;
+box-shadow:0 20px 50px rgba(0,0,0,0.35);
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.price{
+font-size:36px;
+font-weight:700;
+margin:10px 0;
+}
+
+.free{
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.pro{
+border:2px solid #ff4b2b;
+}
+
+.premium{
+background:linear-gradient(135deg,#ff416c,#ff4b2b);
+color:white;
+transform:scale(1.05);
+}
+
+footer{
+margin-top:100px;
+text-align:center;
+opacity:0.7;
+}
+
+@media(max-width:800px){
+
+.hero h1{
+font-size:34px;
+}
+
+.pricing{
+flex-direction:column;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-<header class="hero">
+<div class="container">
 
-<h1>🔥 Viral Shorts Script Generator</h1>
+<div class="hero">
 
-<p>Create viral YouTube Shorts scripts in seconds</p>
+<h1>AI Viral Script Generator</h1>
 
-<button onclick="scrollToTool()">Generate Script</button>
+<p>Create viral YouTube Shorts & TikTok scripts instantly</p>
 
-</header>
-
-
-<section class="features">
-
-<div class="card">
-<h3>⚡ Instant Scripts</h3>
-<p>Generate viral hooks and scripts instantly</p>
 </div>
 
-<div class="card">
-<h3>🚀 Creator Growth</h3>
-<p>Boost your Shorts engagement and views</p>
+
+<div class="generator">
+
+<input id="topic" placeholder="Enter video topic (example: Elon Musk success)">
+
+<button onclick="generateScript()">Generate Viral Script</button>
+
+<div id="result" class="result"></div>
+
+<button style="margin-top:10px" onclick="copyScript()">Copy Script</button>
+
 </div>
 
-<div class="card">
-<h3>💎 Premium Pack</h3>
-<p>Unlock unlimited scripts and trending ideas</p>
+
+
+<div class="pricing">
+
+<div class="card free">
+
+<h3>Free</h3>
+
+<p class="price">$0</p>
+
+<p>3 scripts per day</p>
+
+<p>Basic hooks</p>
+
+<button>Start Free</button>
+
 </div>
 
-</section>
+
+<div class="card pro">
+
+<h3>Standard</h3>
+
+<p class="price">$9</p>
+
+<p>50 scripts per month</p>
+
+<p>Better hooks</p>
+
+<button>Upgrade</button>
+
+</div>
 
 
-<section class="generator" id="tool">
+<div class="card premium">
 
-<h2>Generate Your Script</h2>
+<h3>Premium</h3>
 
-<input id="topic" placeholder="Enter topic (example: Cricket facts)">
+<p class="price">$19</p>
 
-<button onclick="generate()">Generate</button>
+<p>Unlimited scripts</p>
 
-<div id="output"></div>
+<p>Viral optimized</p>
 
-</section>
+<button>Get Premium</button>
 
+</div>
 
-<section class="upgrade">
-
-<h2>Upgrade to Pro</h2>
-
-<p>Unlimited scripts and premium viral packs</p>
-
-<button class="upgrade-btn">Upgrade ₹299/month</button>
-
-</section>
+</div>
 
 
 <footer>
 
-<p>© 2026 Viral Script Tool</p>
+<p>© 2026 AI Script Generator</p>
 
 </footer>
 
-<script src="script.js"></script>
+</div>
+
+
+
+<script>
+
+function generateScript(){
+
+let topic=document.getElementById("topic").value;
+
+if(topic===""){
+alert("Enter a topic first");
+return;
+}
+
+let script=
+"HOOK: Nobody talks about this truth about "+topic+".\n\n"+
+"STORY: Most people think it's simple, but the reality is shocking. "+
+"Here is what actually happened and why it matters today.\n\n"+
+"TWIST: The craziest part? Almost nobody noticed this hidden detail.\n\n"+
+"ENDING: Follow for more viral stories like this.";
+
+document.getElementById("result").innerText=script;
+
+}
+
+function copyScript(){
+
+const text=document.getElementById("result").innerText;
+
+navigator.clipboard.writeText(text);
+
+alert("Script copied!");
+
+}
+
+</script>
 
 </body>
 
