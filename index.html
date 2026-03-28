@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🚀 Viral Shorts Script Generator</title>
+<style>
+  body { font-family: 'Poppins', sans-serif; background: #f2f2f2; margin:0; padding:0; }
+  header { background: linear-gradient(90deg, #4b6cb7, #182848); color: white; text-align: center; padding: 50px 20px; }
+  h1 { margin: 0; font-size: 2.2em; }
+  h3 { font-weight: normal; margin-top: 10px; font-size: 1.1em; }
+  main { display: flex; flex-direction: column; align-items: center; margin: 30px 10px; }
+  input[type="text"] { padding: 15px; width: 80%; max-width: 400px; font-size: 1em; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 15px; }
+  button { padding: 12px 25px; font-size: 1em; border:none; border-radius:6px; background: #4b6cb7; color:white; cursor:pointer; transition: 0.3s; margin:5px; }
+  button:hover { background: #182848; }
+  #output { background: white; padding:25px; margin-top:20px; width: 90%; max-width: 650px; border-radius: 8px; box-shadow: 0px 4px 15px rgba(0,0,0,0.12); white-space: pre-wrap; font-size: 1em; line-height: 1.5em; }
+  footer { text-align: center; padding: 20px; color:#555; font-size:0.9em; }
+  .banner { background:#ffeb3b; padding: 15px; text-align:center; font-weight:bold; margin-bottom:20px; border-radius:6px; }
+  .paid-section { margin-top:20px; background:#d1e7ff; padding:15px; border-radius:6px; text-align:center; width:90%; max-width:400px; }
+  .share-btn { background:#25D366; } 
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🚀 Viral Shorts Script Generator</h1>
+  <h3>Get ready-to-post Shorts scripts in 5 seconds!</h3>
+</header>
+
+<div class="banner">
+💰 Free users see this ad! Upgrade for unlimited scripts & ad-free experience.
+</div>
+
+<main>
+  <input type="text" id="topic" placeholder="Enter your topic (e.g., Cricket, Bollywood)"/>
+  <button onclick="generateScript()">Generate Script</button>
+  
+  <div id="output">Your viral Shorts script will appear here!</div>
+
+  <div class="paid-section">
+    💎 Upgrade for unlimited scripts & trending packs!<br><br>
+    <button onclick="upgrade()">Upgrade Now (₹299/month)</button>
+  </div>
+
+  <button class="share-btn" onclick="shareLink()">Share to Unlock Extra Free Scripts</button>
+</main>
+
+<footer>
+  Share with friends to unlock extra free scripts! | &copy; 2026 Viral Shorts Tool
+</footer>
+
+<script>
+let freeUsed = 0; 
+const maxFree = 1;
+
+function generateScript() {
+  const topic = document.getElementById('topic').value.trim();
+  const output = document.getElementById('output');
+
+  if(!topic) { output.innerText = "⚠️ Please enter a topic!"; return; }
+  if(freeUsed >= maxFree) { output.innerText = "⚠️ You have reached your free script limit for today! Upgrade for unlimited."; return; }
+
+  const hooks = [
+    `You won't believe what happened in ${topic}!`,
+    `Top 3 shocking facts about ${topic} in 15 seconds!`,
+    `Everyone is talking about ${topic} — here's why!`,
+    `Stop scrolling! Here's the truth about ${topic}!`,
+    `This ${topic} fact will blow your mind!`
+  ];
+
+  const bodies = [
+    `Fact 1: Lorem ipsum about ${topic}.\nFact 2: Consectetur adipiscing elit about ${topic}.\nFact 3: Sed do eiusmod tempor about ${topic}.`,
+    `Quick guide to ${topic}: Step 1: Lorem ipsum.\nStep 2: Dolor sit amet.\nStep 3: Consectetur elit.`,
+    `Here are 3 things you MUST know about ${topic} today. Fact A: Lorem.\nFact B: Ipsum.\nFact C: Dolor.`
+  ];
+
+  const hashtags = [
+    `#${topic.replace(/\s+/g,'')} #Trending #Shorts #Viral`,
+    `#${topic.replace(/\s+/g,'')} #ViralContent #YouTubeShorts #MustWatch`,
+    `#${topic.replace(/\s+/g,'')} #HotTopic #ShortsScript #ContentCreator`
+  ];
+
+  const hook = hooks[Math.floor(Math.random()*hooks.length)];
+  const body = bodies[Math.floor(Math.random()*bodies.length)];
+  const tag = hashtags[Math.floor(Math.random()*hashtags.length)];
+
+  output.innerText = `${hook}\n\n${body}\n\n${tag}\n\n🎁 Upgrade for unlimited scripts!`;
+  freeUsed++;
+}
+
+function upgrade() { alert("💳 Upgrade placeholder! Connect Razorpay/Stripe for payments."); }
+
+function shareLink() {
+  const url = encodeURIComponent(window.location.href);
+  const text = encodeURIComponent("Check this out! Generate viral Shorts scripts instantly: ");
+  window.open(`https://wa.me/?text=${text}${url}`, '_blank');
+  alert("✅ Thanks for sharing! Extra free script unlocked.");
+  freeUsed = 0;
+}
+</script>
+
+</body>
+</html>
