@@ -1,86 +1,117 @@
+let dailyLimit = 2;
+let today = new Date().toDateString();
+
 function generateScript(){
 
 let topic=document.getElementById("topic").value;
-
 let length=document.getElementById("length").value;
 
-if(topic===""){
+let storedDate = localStorage.getItem("date");
+let count = parseInt(localStorage.getItem("count") || 0);
 
-alert("Enter a topic first");
-
-return;
-
+if(storedDate !== today){
+localStorage.setItem("date", today);
+localStorage.setItem("count", 0);
+count = 0;
 }
+
+if(count >= dailyLimit){
+alert("Free limit reached. Upgrade for more scripts.");
+return;
+}
+
+localStorage.setItem("count", count + 1);
+
+if(topic===""){
+alert("Enter a topic first");
+return;
+}
+
+let hook = [
+`Nobody talks about this truth about ${topic}.`,
+`The real story behind ${topic} is shocking.`,
+`This secret about ${topic} changed everything.`,
+`Most people misunderstand ${topic}.`
+];
+
+let hookPick = hook[Math.floor(Math.random()*hook.length)];
 
 let script="";
 
-
 if(length==="short"){
 
-script=
+script =
 
-"HOOK: Nobody tells you this about "+topic+".\n\n"+
+`HOOK:
+${hookPick}
 
-"Most people think it's simple, but the truth is shocking.\n\n"+
+SCRIPT:
+Most people only see the surface of ${topic}, but the real story is very different.
+At first, things looked completely normal.
+But behind the scenes, something unexpected happened that changed everything.
+That small moment is actually the reason people still talk about it today.
 
-"Here’s the hidden detail that changes everything.\n\n"+
-
-"Follow for more viral stories.";
+ENDING:
+Follow for more viral stories.`;
 
 }
-
 
 else if(length==="medium"){
 
-script=
+script =
 
-"HOOK: The truth about "+topic+" will surprise you.\n\n"+
+`HOOK:
+${hookPick}
 
-"Everyone believes one thing about this topic, but very few know what actually happened.\n\n"+
+STORY:
+Most people think ${topic} happened overnight, but the truth is very different.
+In the beginning, nobody believed this idea would work.
+There were many failures, criticism, and doubts.
 
-"Here’s the real story behind it and why it matters today.\n\n"+
+But one key decision completely changed the direction.
+That moment turned a struggling idea into something powerful.
 
-"The craziest part? Almost nobody noticed this small detail.\n\n"+
+Today, when people talk about ${topic}, they usually ignore the difficult part of the journey.
 
-"Once you see it, everything changes.\n\n"+
-
-"Follow for more viral stories like this.";
+ENDING:
+Follow for more viral stories like this.`;
 
 }
-
 
 else{
 
-script=
+script =
 
-"HOOK: This is the real story behind "+topic+".\n\n"+
+`HOOK:
+${hookPick}
 
-"Most people only know the surface of this topic, but the deeper story is far more interesting.\n\n"+
+STORY:
+Most people believe ${topic} became successful very quickly.
+But the reality is much more interesting.
 
-"Let’s break down what really happened and why it shocked everyone.\n\n"+
+In the early days, there were many problems and almost nobody believed the idea would succeed.
+Many people thought it would fail completely.
 
-"First, something unexpected happened that nobody predicted.\n\n"+
+But then something unexpected happened.
+One decision changed everything and pushed the idea forward.
 
-"Then everything changed because of one key moment.\n\n"+
+That moment is the reason why ${topic} became so influential today.
 
-"The craziest part is that very few people noticed the hidden reason behind it.\n\n"+
+TWIST:
+The craziest part is that this turning point was almost invisible at the time.
 
-"And once you understand it, the entire story makes sense.\n\n"+
-
-"Follow for more viral stories like this.";
+ENDING:
+Follow for more viral stories like this.`;
 
 }
-
 
 document.getElementById("result").innerText=script;
 
 }
 
-
 function copyScript(){
 
 const text=document.getElementById("result").innerText;
-
 navigator.clipboard.writeText(text);
 
 alert("Script copied!");
