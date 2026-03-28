@@ -1,183 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>AI Viral Script Generator</title>
 
+<link rel="stylesheet" href="style.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-<style>
-
-body{
-margin:0;
-font-family:'Inter',sans-serif;
-background:#0f0f1a;
-color:white;
-overflow-x:hidden;
-}
-
-/* animated gradient background */
-
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:linear-gradient(45deg,#ff416c,#ff4b2b,#7928ca,#2afadf);
-background-size:400% 400%;
-animation:gradientMove 15s ease infinite;
-z-index:-1;
-opacity:0.25;
-}
-
-@keyframes gradientMove{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
-
-.container{
-max-width:1100px;
-margin:auto;
-padding:40px 20px;
-}
-
-/* hero */
-
-.hero{
-text-align:center;
-margin-top:80px;
-}
-
-.hero h1{
-font-size:48px;
-margin-bottom:10px;
-}
-
-.hero p{
-opacity:0.8;
-}
-
-/* input area */
-
-.generator{
-margin-top:40px;
-background:rgba(255,255,255,0.05);
-padding:30px;
-border-radius:16px;
-backdrop-filter:blur(10px);
-box-shadow:0 20px 50px rgba(0,0,0,0.4);
-}
-
-input{
-width:100%;
-padding:14px;
-border-radius:10px;
-border:1px solid rgba(255,255,255,0.15);
-background:rgba(255,255,255,0.05);
-color:white;
-font-size:15px;
-outline:none;
-margin-bottom:15px;
-}
-
-input:focus{
-border-color:#ff4b2b;
-}
-
-button{
-background: linear-gradient(135deg,#ff416c,#ff4b2b);
-border:none;
-padding:14px 24px;
-border-radius:10px;
-color:white;
-font-weight:600;
-font-size:16px;
-cursor:pointer;
-transition:all 0.25s ease;
-box-shadow:0 10px 25px rgba(255,70,70,0.3);
-}
-
-button:hover{
-transform:translateY(-2px);
-box-shadow:0 15px 35px rgba(255,70,70,0.4);
-}
-
-.result{
-margin-top:25px;
-padding:20px;
-background:rgba(255,255,255,0.05);
-border-radius:12px;
-min-height:80px;
-line-height:1.6;
-}
-
-/* pricing */
-
-.pricing{
-display:flex;
-gap:25px;
-margin-top:80px;
-flex-wrap:wrap;
-}
-
-.card{
-flex:1;
-padding:30px;
-border-radius:16px;
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
-text-align:center;
-transition:0.3s;
-box-shadow:0 20px 50px rgba(0,0,0,0.35);
-}
-
-.card:hover{
-transform:translateY(-6px);
-}
-
-.price{
-font-size:36px;
-font-weight:700;
-margin:10px 0;
-}
-
-.free{
-border:1px solid rgba(255,255,255,0.1);
-}
-
-.pro{
-border:2px solid #ff4b2b;
-}
-
-.premium{
-background:linear-gradient(135deg,#ff416c,#ff4b2b);
-color:white;
-transform:scale(1.05);
-}
-
-footer{
-margin-top:100px;
-text-align:center;
-opacity:0.7;
-}
-
-@media(max-width:800px){
-
-.hero h1{
-font-size:34px;
-}
-
-.pricing{
-flex-direction:column;
-}
-
-}
-
-</style>
 </head>
+
 
 <body>
 
@@ -200,10 +33,9 @@ flex-direction:column;
 
 <div id="result" class="result"></div>
 
-<button style="margin-top:10px" onclick="copyScript()">Copy Script</button>
+<button class="copybtn" onclick="copyScript()">Copy Script</button>
 
 </div>
-
 
 
 <div class="pricing">
@@ -211,16 +43,15 @@ flex-direction:column;
 <div class="card free">
 
 <h3>Free</h3>
-
 <p class="price">$0</p>
 
 <p>3 scripts per day</p>
-
 <p>Basic hooks</p>
 
 <button>Start Free</button>
 
 </div>
+
 
 
 <div class="card pro">
@@ -230,12 +61,12 @@ flex-direction:column;
 <p class="price">$9</p>
 
 <p>50 scripts per month</p>
-
 <p>Better hooks</p>
 
 <button>Upgrade</button>
 
 </div>
+
 
 
 <div class="card premium">
@@ -245,7 +76,6 @@ flex-direction:column;
 <p class="price">$19</p>
 
 <p>Unlimited scripts</p>
-
 <p>Viral optimized</p>
 
 <button>Get Premium</button>
@@ -263,42 +93,7 @@ flex-direction:column;
 
 </div>
 
-
-
-<script>
-
-function generateScript(){
-
-let topic=document.getElementById("topic").value;
-
-if(topic===""){
-alert("Enter a topic first");
-return;
-}
-
-let script=
-"HOOK: Nobody talks about this truth about "+topic+".\n\n"+
-"STORY: Most people think it's simple, but the reality is shocking. "+
-"Here is what actually happened and why it matters today.\n\n"+
-"TWIST: The craziest part? Almost nobody noticed this hidden detail.\n\n"+
-"ENDING: Follow for more viral stories like this.";
-
-document.getElementById("result").innerText=script;
-
-}
-
-function copyScript(){
-
-const text=document.getElementById("result").innerText;
-
-navigator.clipboard.writeText(text);
-
-alert("Script copied!");
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
-
 </html>
