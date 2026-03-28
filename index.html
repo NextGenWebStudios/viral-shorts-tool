@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <meta charset="UTF-8">
@@ -10,7 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 </head>
-
 
 <body>
 
@@ -29,6 +29,14 @@
 
 <input id="topic" placeholder="Enter video topic (example: Elon Musk success)">
 
+<select id="length">
+
+<option value="short">Short Script (20 seconds)</option>
+<option value="medium">Medium Script (40 seconds)</option>
+<option value="long">Long Script (60 seconds)</option>
+
+</select>
+
 <button onclick="generateScript()">Generate Viral Script</button>
 
 <div id="result" class="result"></div>
@@ -38,15 +46,17 @@
 </div>
 
 
+
 <div class="pricing">
 
 <div class="card free">
 
 <h3>Free</h3>
+
 <p class="price">$0</p>
 
 <p>3 scripts per day</p>
-<p>Basic hooks</p>
+<p>Basic templates</p>
 
 <button>Start Free</button>
 
@@ -76,13 +86,14 @@
 <p class="price">$19</p>
 
 <p>Unlimited scripts</p>
-<p>Viral optimized</p>
+<p>Best viral templates</p>
 
 <button>Get Premium</button>
 
 </div>
 
 </div>
+
 
 
 <footer>
@@ -96,4 +107,5 @@
 <script src="script.js"></script>
 
 </body>
+
 </html>
