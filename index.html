@@ -3,28 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🚀 Viral Shorts Script Generator</title>
+<title>🔥 Viral Shorts Script Generator</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
 <style>
-  body { font-family: 'Poppins', sans-serif; background: #f2f2f2; margin:0; padding:0; }
-  header { background: linear-gradient(90deg, #4b6cb7, #182848); color: white; text-align: center; padding: 50px 20px; }
-  h1 { margin: 0; font-size: 2.2em; }
-  h3 { font-weight: normal; margin-top: 10px; font-size: 1.1em; }
-  main { display: flex; flex-direction: column; align-items: center; margin: 30px 10px; }
-  input[type="text"] { padding: 15px; width: 80%; max-width: 400px; font-size: 1em; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 15px; }
-  button { padding: 12px 25px; font-size: 1em; border:none; border-radius:6px; background: #4b6cb7; color:white; cursor:pointer; transition: 0.3s; margin:5px; }
-  button:hover { background: #182848; }
-  #output { background: white; padding:25px; margin-top:20px; width: 90%; max-width: 650px; border-radius: 8px; box-shadow: 0px 4px 15px rgba(0,0,0,0.12); white-space: pre-wrap; font-size: 1em; line-height: 1.5em; }
-  footer { text-align: center; padding: 20px; color:#555; font-size:0.9em; }
-  .banner { background:#ffeb3b; padding: 15px; text-align:center; font-weight:bold; margin-bottom:20px; border-radius:6px; }
-  .paid-section { margin-top:20px; background:#d1e7ff; padding:15px; border-radius:6px; text-align:center; width:90%; max-width:400px; }
-  .share-btn { background:#25D366; } 
+/* ===== Global ===== */
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
+body { background:#f5f7fa; }
+
+/* ===== Hero Section ===== */
+header {
+  background: linear-gradient(135deg,#4b6cb7,#182848);
+  color:white; text-align:center; padding:100px 20px;
+  position:relative; overflow:hidden;
+}
+header h1 { font-size:3em; font-weight:700; margin-bottom:15px; animation:fadeIn 1s ease forwards; }
+header h3 { font-weight:400; font-size:1.3em; margin-bottom:30px; animation:fadeIn 1.5s ease forwards; }
+@keyframes fadeIn { 0% { opacity:0; transform:translateY(20px);} 100% {opacity:1; transform:translateY(0);} }
+
+/* ===== Buttons ===== */
+button {
+  padding:15px 30px; border:none; border-radius:8px; cursor:pointer; font-weight:600; font-size:1em;
+  transition:0.3s; box-shadow:0 4px 15px rgba(0,0,0,0.15);
+}
+button:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(0,0,0,0.2);}
+.generate-btn { background:#ff4757; color:white; margin:10px; }
+.upgrade-btn { background:#1dd1a1; color:white; margin:10px; }
+.share-btn { background:#25D366; color:white; margin:10px; }
+
+/* ===== Main ===== */
+main { display:flex; flex-direction:column; align-items:center; padding:50px 20px; max-width:900px; margin:auto; }
+
+/* ===== Input ===== */
+input[type="text"] { padding:18px; width:80%; max-width:500px; font-size:1em; border-radius:8px; border:1px solid #ccc; margin-bottom:20px; }
+
+/* ===== Output Box ===== */
+#output { background:white; width:90%; max-width:700px; padding:25px; border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1); margin-top:25px; font-size:1.05em; line-height:1.6em; transition:0.3s; }
+#output.show { animation:slideUp 0.5s ease forwards; }
+@keyframes slideUp { 0% {opacity:0; transform:translateY(30px);} 100% {opacity:1; transform:translateY(0);} }
+
+/* ===== Banner ===== */
+.banner { background:#ffeb3b; padding:15px 20px; border-radius:8px; margin-bottom:30px; font-weight:600; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
+
+/* ===== Paid Section ===== */
+.paid-section { background:#d1e7ff; padding:20px; border-radius:12px; text-align:center; margin-top:40px; width:90%; max-width:500px; box-shadow:0 5px 20px rgba(0,0,0,0.1);}
+.paid-section h4 { font-size:1.2em; margin-bottom:15px; font-weight:700; }
+
+/* ===== Footer ===== */
+footer { text-align:center; padding:20px; color:#555; font-size:0.9em; margin-top:50px; }
+
+/* ===== Responsive ===== */
+@media(max-width:600px) {
+  header h1 { font-size:2em; }
+  header h3 { font-size:1em; }
+  input[type="text"] { width:95%; }
+}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>🚀 Viral Shorts Script Generator</h1>
-  <h3>Get ready-to-post Shorts scripts in 5 seconds!</h3>
+  <h1>🔥 Viral Shorts Script Generator</h1>
+  <h3>Generate ready-to-post viral Shorts scripts in seconds!</h3>
 </header>
 
 <div class="banner">
@@ -33,16 +74,19 @@
 
 <main>
   <input type="text" id="topic" placeholder="Enter your topic (e.g., Cricket, Bollywood)"/>
-  <button onclick="generateScript()">Generate Script</button>
+  <div>
+    <button class="generate-btn" onclick="generateScript()">Generate Script</button>
+    <button class="upgrade-btn" onclick="upgrade()">Upgrade Now (₹299/month)</button>
+  </div>
   
   <div id="output">Your viral Shorts script will appear here!</div>
 
-  <div class="paid-section">
-    💎 Upgrade for unlimited scripts & trending packs!<br><br>
-    <button onclick="upgrade()">Upgrade Now (₹299/month)</button>
-  </div>
-
   <button class="share-btn" onclick="shareLink()">Share to Unlock Extra Free Scripts</button>
+
+  <div class="paid-section">
+    <h4>💎 Upgrade for Unlimited Scripts & Trending Packs!</h4>
+    <button class="upgrade-btn" onclick="upgrade()">Upgrade Now</button>
+  </div>
 </main>
 
 <footer>
@@ -58,7 +102,7 @@ function generateScript() {
   const output = document.getElementById('output');
 
   if(!topic) { output.innerText = "⚠️ Please enter a topic!"; return; }
-  if(freeUsed >= maxFree) { output.innerText = "⚠️ You have reached your free script limit for today! Upgrade for unlimited."; return; }
+  if(freeUsed >= maxFree) { output.innerText = "⚠️ Free script limit reached! Upgrade for unlimited."; return; }
 
   const hooks = [
     `You won't believe what happened in ${topic}!`,
@@ -85,10 +129,11 @@ function generateScript() {
   const tag = hashtags[Math.floor(Math.random()*hashtags.length)];
 
   output.innerText = `${hook}\n\n${body}\n\n${tag}\n\n🎁 Upgrade for unlimited scripts!`;
+  output.classList.add('show');
   freeUsed++;
 }
 
-function upgrade() { alert("💳 Upgrade placeholder! Connect Razorpay/Stripe for payments."); }
+function upgrade() { alert("💳 Upgrade placeholder! Connect Razorpay/Stripe."); }
 
 function shareLink() {
   const url = encodeURIComponent(window.location.href);
